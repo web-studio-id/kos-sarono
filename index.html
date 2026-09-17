@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kos Sarono Papandayan — Kos Nyaman di Semarang</title>
+<meta name="description" content="Kos nyaman, harga terjangkau, lokasi strategis di Gajahmungkur, Semarang. WiFi 30 Mbps, listrik & air gratis.">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    color: #2c3e50;
+    line-height: 1.6;
+    background: #f8fafc;
+    overflow-x: hidden;
+  }
+  a { text-decoration: none; color: inherit; }
+
+  @keyframes fadeUp { from { opacity:0; transform: translateY(30px);} to { opacity:1; transform: translateY(0);} }
+  @keyframes float { 0%,100% { transform: translateY(0);} 50% { transform: translateY(-10px);} }
+  @keyframes pulse { 0%,100% { box-shadow: 0 5px 20px rgba(37,211,102,0.5);} 50% { box-shadow: 0 5px 32px rgba(37,211,102,0.9);} }
+
+  /* HEADER */
+  header {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(255,255,255,0.98);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+    padding: 15px 5%;
+    display: flex; justify-content: space-between; align-items: center;
+    backdrop-filter: blur(10px);
+  }
+  .logo { font-size: 1.2rem; font-weight: 700; color: #1e6bb8; }
+  .logo span { color: #f39c12; }
+  nav a { margin-left: 20px; font-weight: 500; color: #555; font-size: 0.95rem; transition: color 0.2s; }
+  nav a:hover { color: #1e6bb8; }
+  .btn-wa {
+    background: #25D366; color: white;
+    padding: 10px 18px; border-radius: 25px;
+    font-weight: 600; font-size: 0.9rem;
+    transition: transform 0.2s;
+    white-space: nowrap;
+  }
+  .btn-wa:hover { transform: scale(1.05); }
+  @media (max-width: 768px) {
+    nav { display: none; }
+    .logo { font-size: 1rem; }
+    .btn-wa { padding: 8px 14px; font-size: 0.8rem; }
+  }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(135deg, #1e6bb8 0%, #4a9fe0 50%, #6cb8f0 100%);
+    color: white;
+    padding: 90px 5% 80px;
+    text-align: center;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: ""; position: absolute;
+    top: -50%; left: -50%;
+    width: 200%; height: 200%;
+    background-image: radial-gradient(circle, rgba(255,255,255,0.08) 1px, transparent 1px);
+    background-size: 30px 30px;
+    pointer-events: none;
+  }
+  .hero > * { position: relative; z-index: 1; }
+  .hero .badge-top {
+    display: inline-block;
+    background: rgba(255,255,255,0.2);
+    padding: 6px 16px; border-radius: 20px;
+    font-size: 0.85rem; margin-bottom: 20px;
+    border: 1px solid rgba(255,255,255,0.3);
+  }
+  .hero h1 { font-size: 2.6rem; margin-bottom: 18px; line-height: 1.2; }
+  .hero h1 .highlight { color: #ffd166; }
+  .hero p { font-size: 1.1rem; max-width: 700px; margin: 0 auto 32px; opacity: 0.95; }
+  .hero .cta-group {
+    display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;
+    margin-bottom: 25px;
+  }
+  .hero .cta {
+    display: inline-block;
+    background: #25D366; color: white;
+    padding: 15px 34px; border-radius: 30px;
+    font-weight: 700; font-size: 1rem;
+    box-shadow: 0 5px 20px rgba(37,211,102,0.4);
+    transition: transform 0.2s;
+  }
+  .hero .cta:hover { transform: translateY(-3px); }
+  .hero .cta-secondary {
+    display: inline-block;
+    background: rgba(255,255,255,0.15); color: white;
+    padding: 15px 34px; border-radius: 30px;
+    font-weight: 700; font-size: 1rem;
+    border: 2px solid rgba(255,255,255,0.5);
+    transition: background 0.2s;
+  }
+  .hero .cta-secondary:hover { background: rgba(255,255,255,0.25); }
+  .rating {
+    display: inline-block; margin-top: 10px;
+    background: rgba(255,255,255,0.2);
+    padding: 8px 20px; border-radius: 20px;
+    font-size: 0.95rem;
+    border: 1px solid rgba(255,255,255,0.3);
+  }
+  @media (max-width: 768px) {
+    .hero { padding: 60px 5% 50px; }
+    .hero h1 { font-size: 1.7rem; }
+    .hero p { font-size: 0.95rem; }
+    .hero .cta, .hero .cta-secondary { padding: 13px 24px; font-size: 0.9rem; }
+  }
+
+  /* SECTION */
+  section { padding: 70px 5%; }
+  .section-title {
+    text-align: center; font-size: 2rem;
+    margin-bottom: 10px; color: #1e6bb8;
+  }
+  .section-sub {
+    text-align: center; color: #777;
+    margin-bottom: 45px; font-size: 0.95rem;
+  }
+  @media (max-width: 768px) {
+    section { padding: 50px 5%; }
+    .section-title { font-size: 1.5rem; }
+  }
+
+  /* HIGHLIGHT STRIP */
+  .highlight-strip {
+    background: #fff8e7;
+    border-top: 2px solid #ffe4a1;
+    border-bottom: 2px solid #ffe4a1;
+    padding: 25px 5%;
+    text-align: center;
+  }
+  .highlight-strip p { font-size: 1rem; color: #8a6d1a; font-weight: 600; }
+  .highlight-strip p .big { font-size: 1.3rem; color: #d48806; }
+
+  /* FASILITAS */
+  .fasilitas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px; max-width: 1100px; margin: 0 auto;
+  }
+  .fasilitas-item {
+    background: white; padding: 28px 20px;
+    border-radius: 12px; text-align: center;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.05);
+    transition: transform 0.2s, box-shadow 0.2s;
+    border: 1px solid #eef2f7;
+  }
+  .fasilitas-item:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(30,107,184,0.1); }
+  .fasilitas-item .icon { font-size: 2.8rem; margin-bottom: 12px; display: block; }
+  .fasilitas-item h3 { font-size: 1rem; color: #2c3e50; margin-bottom: 6px; }
+  .fasilitas-item p { font-size: 0.85rem; color: #777; }
+
+  /* KAMAR */
+  .kamar-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px; max-width: 900px; margin: 0 auto;
+  }
+  .kamar-card {
+    background: white; border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+    transition: transform 0.2s;
+    border: 1px solid #eef2f7;
+  }
+  .kamar-card:hover { transform: translateY(-5px); }
+  .kamar-header {
+    background: linear-gradient(135deg, #1e6bb8, #4a9fe0);
+    color: white; padding: 30px 25px; text-align: center;
+    position: relative;
+  }
+  .kamar-header .icon-big { font-size: 3rem; margin-bottom: 10px; display: block; }
+  .kamar-header h3 { font-size: 1.3rem; margin-bottom: 5px; }
+  .kamar-header .subtipe { font-size: 0.9rem; opacity: 0.9; margin-bottom: 15px; }
+  .kamar-header .harga { font-size: 2rem; font-weight: 700; color: #ffd166; }
+  .kamar-header .harga small { font-size: 0.9rem; color: white; font-weight: 400; }
+  .kamar-body { padding: 25px; }
+  .kamar-body ul { list-style: none; margin-bottom: 22px; }
+  .kamar-body ul li { padding: 9px 0; border-bottom: 1px solid #f0f0f0; font-size: 0.95rem; }
+  .kamar-body ul li:before { content: "✓ "; color: #25D366; font-weight: 700; }
+  .kamar-body .btn-pesan {
+    display: block; text-align: center;
+    background: #25D366; color: white;
+    padding: 13px; border-radius: 8px;
+    font-weight: 600; transition: background 0.2s;
+  }
+  .kamar-body .btn-pesan:hover { background: #1ea952; }
+  .badge {
+    display: inline-block; background: #f39c12;
+    color: white; padding: 4px 12px;
+    border-radius: 12px; font-size: 0.75rem;
+    margin-bottom: 12px; font-weight: 600;
+  }
+
+  /* LOKASI */
+  .lokasi-wrap {
+    max-width: 900px; margin: 0 auto;
+    background: white; border-radius: 15px;
+    padding: 35px; box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    border: 1px solid #eef2f7;
+  }
+  .lokasi-wrap h3 { color: #1e6bb8; margin-bottom: 15px; font-size: 1.1rem; }
+  .lokasi-wrap .alamat {
+    background: #f0f7ff; padding: 18px;
+    border-left: 4px solid #1e6bb8;
+    border-radius: 5px; margin-bottom: 25px;
+    font-size: 1rem;
+  }
+  .tempat-list { list-style: none; margin-bottom: 25px; }
+  .tempat-list li {
+    padding: 12px 0; border-bottom: 1px dashed #e0e6ed;
+    display: flex; justify-content: space-between;
+    font-size: 0.95rem;
+  }
+  .tempat-list li:last-child { border-bottom: none; }
+  .tempat-list .jarak { color: #f39c12; font-weight: 600; }
+  .map-wrap {
+    border-radius: 12px; overflow: hidden;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+    margin-top: 10px;
+  }
+  .map-wrap iframe { width: 100%; height: 320px; border: 0; display: block; }
+
+  /* DENAH */
+  .denah-wrap {
+    max-width: 800px; margin: 0 auto;
+    background: white; border-radius: 15px;
+    padding: 30px; box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    border: 2px dashed #c9d9e8;
+    text-align: center;
+  }
+  .denah-wrap .icon-denah { font-size: 4rem; margin-bottom: 15px; }
+  .denah-wrap h3 { color: #1e6bb8; margin-bottom: 12px; }
+  .denah-wrap p { color: #777; font-size: 0.95rem; margin-bottom: 20px; }
+  .denah-wrap .btn-wa-inline {
+    display: inline-block;
+    background: #25D366; color: white;
+    padding: 12px 26px; border-radius: 25px;
+    font-weight: 600; font-size: 0.9rem;
+  }
+
+  /* SYARAT */
+  .syarat-wrap {
+    max-width: 800px; margin: 0 auto;
+    background: white; border-radius: 15px;
+    padding: 30px 35px; box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    border: 1px solid #eef2f7;
+  }
+  .syarat-wrap ul { list-style: none; }
+  .syarat-wrap ul li {
+    padding: 12px 0 12px 32px; position: relative;
+    border-bottom: 1px solid #f0f0f0;
+    font-size: 0.95rem;
+  }
+  .syarat-wrap ul li:last-child { border-bottom: none; }
+  .syarat-wrap ul li:before {
+    content: "✓"; position: absolute; left: 0; top: 12px;
+    color: #25D366; font-weight: 700; font-size: 1.1rem;
+  }
+
+  /* TESTIMONI */
+  .testi-wrap {
+    max-width: 700px; margin: 0 auto;
+    background: white; border-radius: 15px;
+    padding: 40px 35px; text-align: center;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    border: 1px solid #eef2f7;
+  }
+  .testi-wrap .bintang { color: #f39c12; font-size: 1.8rem; margin-bottom: 18px; letter-spacing: 3px; }
+  .testi-wrap p { font-style: italic; color: #555; margin-bottom: 18px; font-size: 1.05rem; line-height: 1.7; }
+  .testi-wrap .nama { font-weight: 700; color: #1e6bb8; }
+
+  /* FOOTER */
+  footer {
+    background: #1a3a5c; color: white;
+    padding: 55px 5% 25px;
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 35px; max-width: 1100px; margin: 0 auto 35px;
+  }
+  .footer-grid h4 { margin-bottom: 18px; color: #ffd166; font-size: 1rem; }
+  .footer-grid p, .footer-grid a {
+    font-size: 0.9rem; color: #cbd5e0;
+    margin-bottom: 10px; display: block;
+    line-height: 1.6;
+  }
+  .footer-grid a:hover { color: #ffd166; }
+  .footer-bottom {
+    text-align: center; padding-top: 25px;
+    border-top: 1px solid #2c5a85;
+    font-size: 0.85rem; color: #8fa8c2;
+  }
+
+  /* FLOATING WA */
+  .wa-float {
+    position: fixed; bottom: 25px; right: 25px;
+    background: #25D366; color: white;
+    width: 60px; height: 60px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.8rem;
+    box-shadow: 0 5px 20px rgba(37,211,102,0.5);
+    z-index: 999; transition: transform 0.2s;
+    animation: pulse 2s infinite;
+  }
+  .wa-float:hover { transform: scale(1.1); }
+  @media (max-width: 768px) {
+    .wa-float { width: 55px; height: 55px; font-size: 1.6rem; bottom: 20px; right: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="logo">Kos <span>Sarono</span> Papandayan</div>
+  <nav>
+    <a href="#fasilitas">Fasilitas</a>
+    <a href="#kamar">Kamar</a>
+    <a href="#lokasi">Lokasi</a>
+    <a href="#kontak">Kontak</a>
+  </nav>
+  <a href="https://wa.me/6281944584432" class="btn-wa">💬 Hubungi</a>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="badge-top">⭐ Rating 5.0 di Google Maps</div>
+  <h1>Rumah Kos <span class="highlight">Nyaman</span><br>di Jantung Semarang</h1>
+  <p>Kamar dengan fasilitas lengkap, lokasi aman 24 jam, harga terjangkau. Cocok untuk mahasiswa, karyawan, atau yang mencari tempat tinggal nyaman di Gajahmungkur.</p>
+  <div class="cta-group">
+    <a href="https://wa.me/6281944584432?text=Halo%20Kos%20Sarono,%20saya%20ingin%20tanya%20ketersediaan%20kamar" class="cta">💬 Hubungi via WhatsApp</a>
+    <a href="#kamar" class="cta-secondary">Lihat Kamar</a>
+  </div>
+  <div class="rating">📍 Jl. Watulawang Timur III No. 2, Gajahmungkur</div>
+</section>
+
+<!-- HIGHLIGHT STRIP -->
+<div class="highlight-strip">
+  <p><span class="big">⚡ Listrik Gratis</span> &nbsp;•&nbsp; <span class="big">💧 Air Gratis</span> &nbsp;•&nbsp; <span class="big">🛜 WiFi 30 Mbps</span></p>
+</div>
+
+<!-- FASILITAS -->
+<section id="fasilitas">
+  <h2 class="section-title">Fasilitas Lengkap</h2>
+  <p class="section-sub">Semua yang Anda butuhkan untuk tinggal nyaman</p>
+  <div class="fasilitas-grid">
+    <div class="fasilitas-item"><span class="icon">🛜</span><h3>WiFi 30 Mbps</h3><p>Unlimited, kencang</p></div>
+    <div class="fasilitas-item"><span class="icon">⚡</span><h3>Listrik Gratis</h3><p>Tanpa biaya tambahan</p></div>
+    <div class="fasilitas-item"><span class="icon">💧</span><h3>Air Gratis</h3><p>PDAM berkualitas</p></div>
+    <div class="fasilitas-item"><span class="icon">🏍️</span><h3>Parkir Dalam</h3><p>Motor masuk rumah</p></div>
+    <div class="fasilitas-item"><span class="icon">🔒</span><h3>Keamanan 24 Jam</h3><p>Aman & terjaga</p></div>
+    <div class="fasilitas-item"><span class="icon">👥</span><h3>Ruang Tamu</h3><p>Area berkumpul</p></div>
+    <div class="fasilitas-item"><span class="icon">🍳</span><h3>Dapur Bersama</h3><p>Peralatan lengkap</p></div>
+    <div class="fasilitas-item"><span class="icon">👕</span><h3>Area Jemuran</h3><p>Lantai dasar</p></div>
+  </div>
+</section>
+
+<!-- KAMAR -->
+<section id="kamar" style="background:#eef5fb;">
+  <h2 class="section-title">Pilihan Kamar</h2>
+  <p class="section-sub">Harga terjangkau, fasilitas maksimal</p>
+  <div class="kamar-grid">
+
+    <div class="kamar-card">
+      <div class="kamar-header">
+        <span class="icon-big">🛏️</span>
+        <div class="badge">TERSEDIA 3 KAMAR</div>
+        <h3>Kamar Tipe A</h3>
+        <p class="subtipe">Kamar Mandi Dalam</p>
+        <div class="harga">Rp 650.000<small>/bulan</small></div>
+      </div>
+      <div class="kamar-body">
+        <ul>
+          <li>Ukuran 3.5 m × 3.5 m</li>
+          <li>Kamar mandi dalam</li>
+          <li>Kasur & lemari</li>
+          <li>Kamar No. 3, 4, 5</li>
+          <li>Privasi lebih terjaga</li>
+        </ul>
+        <a href="https://wa.me/6281944584432?text=Halo,%20saya%20tertarik%20Kamar%20Tipe%20A%20Kos%20Sarono" class="btn-pesan">💬 Pesan via WhatsApp</a>
+      </div>
+    </div>
+
+    <div class="kamar-card">
+      <div class="kamar-header">
+        <span class="icon-big">🛏️</span>
+        <div class="badge">TERSEDIA 2 KAMAR</div>
+        <h3>Kamar Tipe B</h3>
+        <p class="subtipe">Kamar Mandi Luar</p>
+        <div class="harga">Rp 500.000<small>/bulan</small></div>
+      </div>
+      <div class="kamar-body">
+        <ul>
+          <li>Kamar No. 1: 2 m × 3 m</li>
+          <li>Kamar No. 2: 3 m × 3 m</li>
+          <li>Kamar mandi bersama</li>
+          <li>Kasur & lemari</li>
+          <li>Cocok untuk mahasiswa</li>
+        </ul>
+        <a href="https://wa.me/6281944584432?text=Halo,%20saya%20tertarik%20Kamar%20Tipe%20B%20Kos%20Sarono" class="btn-pesan">💬 Pesan via WhatsApp</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- LOKASI -->
+<section id="lokasi">
+  <h2 class="section-title">Lokasi Strategis</h2>
+  <p class="section-sub">Dekat ke mana-mana</p>
+  <div class="lokasi-wrap">
+    <h3>📍 Alamat Lengkap</h3>
+    <div class="alamat">
+      Jl. Watulawang Timur III No. 2, Gajahmungkur,<br>
+      Semarang, Jawa Tengah
+    </div>
+
+    <h3>🏬 Tempat Terdekat</h3>
+    <ul class="tempat-list">
+      <li><span>🛒 Indomaret</span><span class="jarak">500 m</span></li>
+      <li><span>⛽ SPBU</span><span class="jarak">1 km</span></li>
+      <li><span>🚏 Akses transportasi umum</span><span class="jarak">Mudah</span></li>
+      <li><span>🏙️ Pusat kota Semarang</span><span class="jarak">Strategis</span></li>
+    </ul>
+
+    <h3>🗺️ Peta Lokasi</h3>
+    <div class="map-wrap">
+      <iframe 
+        src="https://www.google.com/maps?q=Jl.+Watulawang+Timur+III+No.+2,+Gajahmungkur,+Semarang&output=embed"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+  </div>
+</section>
+
+<!-- DENAH -->
+<section style="background:#eef5fb;">
+  <h2 class="section-title">Denah Kos</h2>
+  <p class="section-sub">Informasi letak kamar</p>
+  <div class="denah-wrap">
+    <div class="icon-denah">🏠</div>
+    <h3>Denah akan segera tersedia</h3>
+    <p>Untuk melihat denah kos dan posisi kamar secara detail, silakan hubungi kami langsung via WhatsApp. Kami akan dengan senang hati menjelaskan tata letak kos.</p>
+    <a href="https://wa.me/6281944584432?text=Halo,%20saya%20ingin%20tanya%20denah%20dan%20tata%20letak%20kamar%20Kos%20Sarono" class="btn-wa-inline">💬 Tanya via WhatsApp</a>
+  </div>
+</section>
+
+<!-- SYARAT -->
+<section>
+  <h2 class="section-title">Syarat & Ketentuan</h2>
+  <p class="section-sub">Informasi untuk calon penghuni</p>
+  <div class="syarat-wrap">
+    <ul>
+      <li>Minimal kontrak 1 bulan</li>
+      <li>Deposit sesuai kesepakatan</li>
+      <li>Terbuka untuk semua kalangan: mahasiswa, karyawan, profesional</li>
+      <li>Calon penghuni dianjurkan survey langsung sebelum memesan</li>
+      <li>Menjaga kebersihan dan ketenangan bersama</li>
+    </ul>
+  </div>
+</section>
+
+<!-- TESTIMONI -->
+<section style="background:#eef5fb;">
+  <h2 class="section-title">Kata Penghuni</h2>
+  <p class="section-sub">Rating 5.0 di Google Maps</p>
+  <div class="testi-wrap">
+    <div class="bintang">★★★★★</div>
+    <p>"Kos yang nyaman, bersih, dan lokasinya strategis. Pemiliknya ramah dan fasilitasnya lengkap. Recommended untuk yang cari kos di Semarang!"</p>
+    <div class="nama">— Penghuni Kos Sarono</div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="kontak">
+  <div class="footer-grid">
+    <div>
+      <h4>Kos Sarono Papandayan</h4>
+      <p>Kos nyaman, harga terjangkau, lokasi strategis di jantung Semarang. Cocok untuk mahasiswa, karyawan, dan profesional muda.</p>
+    </div>
+    <div>
+      <h4>Kontak</h4>
+      <a href="https://wa.me/6281944584432">💬 +62 819-4458-4432</a>
+      <p>📍 Jl. Watulawang Timur III No. 2</p>
+      <p>Gajahmungkur, Semarang</p>
+      <p>Jawa Tengah</p>
+    </div>
+    <div>
+      <h4>Navigasi</h4>
+      <a href="#fasilitas">Fasilitas</a>
+      <a href="#kamar">Kamar & Harga</a>
+      <a href="#lokasi">Lokasi</a>
+      <a href="#kontak">Kontak</a>
+    </div>
+    <div>
+      <h4>Jam Survey</h4>
+      <p>Senin – Minggu</p>
+      <p>08.00 – 20.00 WIB</p>
+      <p style="margin-top:12px;">Silakan hubungi dulu via WhatsApp sebelum datang.</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    © 2025 Kos Sarono Papandayan. Dibuat dengan ❤️ untuk penghuni nyaman.
+  </div>
+</footer>
+
+<!-- FLOATING WHATSAPP -->
+<a href="https://wa.me/6281944584432?text=Halo%20Kos%20Sarono,%20saya%20ingin%20tanya" class="wa-float" title="Chat WhatsApp">💬</a>
+
+</body>
+</html>
