@@ -12,113 +12,220 @@
     font-family: 'Segoe UI', Tahoma, sans-serif;
     color: #2c3e50;
     line-height: 1.6;
-    background: #f8fafc;
+    background: #f5f5f5;
     overflow-x: hidden;
   }
   a { text-decoration: none; color: inherit; }
 
   @keyframes fadeUp { from { opacity:0; transform: translateY(30px);} to { opacity:1; transform: translateY(0);} }
-  @keyframes float { 0%,100% { transform: translateY(0);} 50% { transform: translateY(-10px);} }
   @keyframes pulse { 0%,100% { box-shadow: 0 5px 20px rgba(37,211,102,0.5);} 50% { box-shadow: 0 5px 32px rgba(37,211,102,0.9);} }
+  @keyframes float { 0%,100% { transform: translateY(0);} 50% { transform: translateY(-8px);} }
 
-  /* HEADER */
-  header {
-    position: sticky; top: 0; z-index: 100;
-    background: rgba(255,255,255,0.98);
-    box-shadow: 0 2px 10px rgba(0,0,0,0.06);
-    padding: 15px 5%;
-    display: flex; justify-content: space-between; align-items: center;
-    backdrop-filter: blur(10px);
+  /* ═══════════════════════════════════════
+     HERO FULL-IMAGE
+     ═══════════════════════════════════════ */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.65)), 
+                url('https://i.imgur.com/KKmqX2Y.jpg') center/cover no-repeat;
+    color: white;
+    display: flex; flex-direction: column;
+    padding: 0;
   }
-  .logo { font-size: 1.2rem; font-weight: 700; color: #1e6bb8; }
-  .logo span { color: #f39c12; }
-  nav a { margin-left: 20px; font-weight: 500; color: #555; font-size: 0.95rem; transition: color 0.2s; }
-  nav a:hover { color: #1e6bb8; }
-  .btn-wa {
+
+  /* HEADER TRANSPARAN */
+  .hero-header {
+    position: absolute; top: 0; left: 0; right: 0;
+    z-index: 10;
+    padding: 20px 5%;
+    display: flex; justify-content: space-between; align-items: center;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.5), transparent);
+  }
+  .logo-wrap {
+    display: flex; align-items: center; gap: 12px;
+  }
+  .logo-icon {
+    width: 42px; height: 42px;
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.4rem;
+  }
+  .logo-text {
+    display: flex; flex-direction: column;
+    line-height: 1.1;
+  }
+  .logo-text .brand {
+    font-size: 1.1rem; font-weight: 800;
+    color: white;
+    letter-spacing: 1px;
+  }
+  .logo-text .tagline {
+    font-size: 0.7rem; color: #d4a017;
+    font-weight: 600;
+    letter-spacing: 2px;
+  }
+  nav {
+    display: flex; align-items: center; gap: 5px;
+  }
+  nav a {
+    padding: 8px 16px;
+    font-weight: 500; color: rgba(255,255,255,0.9);
+    font-size: 0.92rem;
+    border-radius: 20px;
+    transition: all 0.2s;
+  }
+  nav a:hover {
+    color: white;
+    background: rgba(255,255,255,0.15);
+  }
+  .header-cta {
     background: #25D366; color: white;
-    padding: 10px 18px; border-radius: 25px;
-    font-weight: 600; font-size: 0.9rem;
-    transition: transform 0.2s;
+    padding: 10px 20px; border-radius: 25px;
+    font-weight: 700; font-size: 0.88rem;
+    box-shadow: 0 4px 15px rgba(37,211,102,0.4);
+    transition: all 0.2s;
     white-space: nowrap;
   }
-  .btn-wa:hover { transform: scale(1.05); }
-  @media (max-width: 768px) {
-    nav { display: none; }
-    .logo { font-size: 1rem; }
-    .btn-wa { padding: 8px 14px; font-size: 0.8rem; }
-  }
+  .header-cta:hover { transform: translateY(-2px); }
 
-  /* HERO */
-  .hero {
-    background: linear-gradient(135deg, #1e6bb8 0%, #4a9fe0 50%, #6cb8f0 100%);
-    color: white;
-    padding: 90px 5% 80px;
-    text-align: center;
-    position: relative; overflow: hidden;
+  /* HERO CONTENT */
+  .hero-content {
+    position: relative; z-index: 2;
+    max-width: 1200px; margin: 0 auto;
+    padding: 180px 5% 60px;
+    flex: 1;
+    display: flex; flex-direction: column; justify-content: center;
   }
-  .hero::before {
-    content: ""; position: absolute;
-    top: -50%; left: -50%;
-    width: 200%; height: 200%;
-    background-image: radial-gradient(circle, rgba(255,255,255,0.08) 1px, transparent 1px);
-    background-size: 30px 30px;
-    pointer-events: none;
+  .hero-tagline {
+    font-size: 0.85rem;
+    letter-spacing: 4px;
+    color: #d4a017;
+    font-weight: 600;
+    margin-bottom: 20px;
+    text-transform: uppercase;
   }
-  .hero > * { position: relative; z-index: 1; }
-  .hero .badge-top {
-    display: inline-block;
-    background: rgba(255,255,255,0.2);
-    padding: 6px 16px; border-radius: 20px;
-    font-size: 0.85rem; margin-bottom: 20px;
-    border: 1px solid rgba(255,255,255,0.3);
+  .hero-content h1 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    max-width: 700px;
+    animation: fadeUp 0.8s ease-out;
   }
-  .hero h1 { font-size: 2.6rem; margin-bottom: 18px; line-height: 1.2; }
-  .hero h1 .highlight { color: #ffd166; }
-  .hero p { font-size: 1.1rem; max-width: 700px; margin: 0 auto 32px; opacity: 0.95; }
-  .hero .cta-group {
-    display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;
-    margin-bottom: 25px;
+  .hero-content h1 .highlight { color: #d4a017; }
+  .hero-content p {
+    font-size: 1.15rem;
+    max-width: 600px;
+    margin-bottom: 35px;
+    opacity: 0.95;
+    line-height: 1.7;
   }
-  .hero .cta {
-    display: inline-block;
+  .hero-cta-group {
+    display: flex; gap: 15px; flex-wrap: wrap;
+  }
+  .btn-hero-primary {
+    display: inline-flex; align-items: center; gap: 8px;
     background: #25D366; color: white;
-    padding: 15px 34px; border-radius: 30px;
+    padding: 16px 32px; border-radius: 40px;
     font-weight: 700; font-size: 1rem;
-    box-shadow: 0 5px 20px rgba(37,211,102,0.4);
+    box-shadow: 0 6px 20px rgba(37,211,102,0.4);
     transition: transform 0.2s;
   }
-  .hero .cta:hover { transform: translateY(-3px); }
-  .hero .cta-secondary {
-    display: inline-block;
-    background: rgba(255,255,255,0.15); color: white;
-    padding: 15px 34px; border-radius: 30px;
-    font-weight: 700; font-size: 1rem;
+  .btn-hero-primary:hover { transform: translateY(-3px); }
+  .btn-hero-secondary {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(10px);
     border: 2px solid rgba(255,255,255,0.5);
+    color: white;
+    padding: 16px 32px; border-radius: 40px;
+    font-weight: 700; font-size: 1rem;
     transition: background 0.2s;
   }
-  .hero .cta-secondary:hover { background: rgba(255,255,255,0.25); }
-  .rating {
-    display: inline-block; margin-top: 10px;
-    background: rgba(255,255,255,0.2);
-    padding: 8px 20px; border-radius: 20px;
-    font-size: 0.95rem;
-    border: 1px solid rgba(255,255,255,0.3);
+  .btn-hero-secondary:hover { background: rgba(255,255,255,0.25); }
+
+  /* THUMBNAIL GALERI */
+  .hero-galeri {
+    position: relative; z-index: 2;
+    max-width: 1200px; margin: 0 auto;
+    padding: 0 5% 50px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
   }
-  @media (max-width: 768px) {
-    .hero { padding: 60px 5% 50px; }
-    .hero h1 { font-size: 1.7rem; }
-    .hero p { font-size: 0.95rem; }
-    .hero .cta, .hero .cta-secondary { padding: 13px 24px; font-size: 0.9rem; }
+  .galeri-thumb {
+    aspect-ratio: 1/1;
+    background: linear-gradient(135deg, rgba(255,255,255,0.15), rgba(255,255,255,0.08));
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 12px;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s;
+    padding: 10px;
+    text-align: center;
+  }
+  .galeri-thumb:hover {
+    background: rgba(212,160,23,0.3);
+    border-color: #d4a017;
+    transform: translateY(-4px);
+  }
+  .galeri-thumb .icon {
+    font-size: 1.8rem; margin-bottom: 6px;
+  }
+  .galeri-thumb .label {
+    font-size: 0.7rem; font-weight: 600;
+    opacity: 0.9;
   }
 
-  /* SECTION */
+  @media (max-width: 900px) {
+    nav { display: none; }
+    .logo-text .tagline { display: none; }
+  }
+  @media (max-width: 768px) {
+    .hero-content { padding: 140px 5% 40px; }
+    .hero-content h1 { font-size: 2rem; }
+    .hero-content p { font-size: 0.95rem; }
+    .hero-tagline { font-size: 0.7rem; letter-spacing: 3px; }
+    .btn-hero-primary, .btn-hero-secondary {
+      padding: 13px 22px; font-size: 0.9rem;
+      flex: 1; justify-content: center;
+    }
+    .hero-galeri {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+      padding-bottom: 30px;
+    }
+    .galeri-thumb .icon { font-size: 1.5rem; }
+    .galeri-thumb .label { font-size: 0.65rem; }
+  }
+  @media (max-width: 600px) {
+    .header-cta { padding: 8px 14px; font-size: 0.78rem; }
+    .header-cta span { display: none; }
+  }
+
+  /* ═══════════════════════════════════════
+     SECTION BAWAH (abu-abu muda)
+     ═══════════════════════════════════════ */
   section { padding: 70px 5%; }
   .section-title {
     text-align: center; font-size: 2rem;
-    margin-bottom: 10px; color: #1e6bb8;
+    margin-bottom: 10px; color: #2c3e50;
+  }
+  .section-title::after {
+    content: ""; display: block;
+    width: 60px; height: 4px;
+    background: linear-gradient(90deg, #d4a017, #f4b400);
+    margin: 15px auto 0; border-radius: 2px;
   }
   .section-sub {
-    text-align: center; color: #777;
+    text-align: center; color: #8a7a55;
     margin-bottom: 45px; font-size: 0.95rem;
   }
   @media (max-width: 768px) {
@@ -128,14 +235,14 @@
 
   /* HIGHLIGHT STRIP */
   .highlight-strip {
-    background: #fff8e7;
-    border-top: 2px solid #ffe4a1;
-    border-bottom: 2px solid #ffe4a1;
+    background: white;
+    border-top: 2px solid #e0e6ed;
+    border-bottom: 2px solid #e0e6ed;
     padding: 25px 5%;
     text-align: center;
   }
-  .highlight-strip p { font-size: 1rem; color: #8a6d1a; font-weight: 600; }
-  .highlight-strip p .big { font-size: 1.3rem; color: #d48806; }
+  .highlight-strip p { font-size: 1rem; color: #5a5a5a; font-weight: 600; }
+  .highlight-strip p .big { font-size: 1.25rem; color: #d4a017; }
 
   /* FASILITAS */
   .fasilitas-grid {
@@ -146,11 +253,11 @@
   .fasilitas-item {
     background: white; padding: 28px 20px;
     border-radius: 12px; text-align: center;
-    box-shadow: 0 3px 12px rgba(0,0,0,0.05);
+    box-shadow: 0 3px 12px rgba(0,0,0,0.04);
     transition: transform 0.2s, box-shadow 0.2s;
     border: 1px solid #eef2f7;
   }
-  .fasilitas-item:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(30,107,184,0.1); }
+  .fasilitas-item:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0,0,0,0.08); }
   .fasilitas-item .icon { font-size: 2.8rem; margin-bottom: 12px; display: block; }
   .fasilitas-item h3 { font-size: 1rem; color: #2c3e50; margin-bottom: 6px; }
   .fasilitas-item p { font-size: 0.85rem; color: #777; }
@@ -164,20 +271,19 @@
   .kamar-card {
     background: white; border-radius: 15px;
     overflow: hidden;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.06);
     transition: transform 0.2s;
     border: 1px solid #eef2f7;
   }
   .kamar-card:hover { transform: translateY(-5px); }
   .kamar-header {
-    background: linear-gradient(135deg, #1e6bb8, #4a9fe0);
+    background: linear-gradient(135deg, #3a4a5c, #5a6a7c);
     color: white; padding: 30px 25px; text-align: center;
-    position: relative;
   }
   .kamar-header .icon-big { font-size: 3rem; margin-bottom: 10px; display: block; }
   .kamar-header h3 { font-size: 1.3rem; margin-bottom: 5px; }
   .kamar-header .subtipe { font-size: 0.9rem; opacity: 0.9; margin-bottom: 15px; }
-  .kamar-header .harga { font-size: 2rem; font-weight: 700; color: #ffd166; }
+  .kamar-header .harga { font-size: 2rem; font-weight: 700; color: #d4a017; }
   .kamar-header .harga small { font-size: 0.9rem; color: white; font-weight: 400; }
   .kamar-body { padding: 25px; }
   .kamar-body ul { list-style: none; margin-bottom: 22px; }
@@ -191,7 +297,7 @@
   }
   .kamar-body .btn-pesan:hover { background: #1ea952; }
   .badge {
-    display: inline-block; background: #f39c12;
+    display: inline-block; background: #d4a017;
     color: white; padding: 4px 12px;
     border-radius: 12px; font-size: 0.75rem;
     margin-bottom: 12px; font-weight: 600;
@@ -201,13 +307,13 @@
   .lokasi-wrap {
     max-width: 900px; margin: 0 auto;
     background: white; border-radius: 15px;
-    padding: 35px; box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    padding: 35px; box-shadow: 0 5px 20px rgba(0,0,0,0.04);
     border: 1px solid #eef2f7;
   }
-  .lokasi-wrap h3 { color: #1e6bb8; margin-bottom: 15px; font-size: 1.1rem; }
+  .lokasi-wrap h3 { color: #3a4a5c; margin-bottom: 15px; font-size: 1.1rem; }
   .lokasi-wrap .alamat {
-    background: #f0f7ff; padding: 18px;
-    border-left: 4px solid #1e6bb8;
+    background: #f5f5f5; padding: 18px;
+    border-left: 4px solid #d4a017;
     border-radius: 5px; margin-bottom: 25px;
     font-size: 1rem;
   }
@@ -218,7 +324,7 @@
     font-size: 0.95rem;
   }
   .tempat-list li:last-child { border-bottom: none; }
-  .tempat-list .jarak { color: #f39c12; font-weight: 600; }
+  .tempat-list .jarak { color: #d4a017; font-weight: 600; }
   .map-wrap {
     border-radius: 12px; overflow: hidden;
     box-shadow: 0 3px 12px rgba(0,0,0,0.08);
@@ -226,29 +332,11 @@
   }
   .map-wrap iframe { width: 100%; height: 320px; border: 0; display: block; }
 
-  /* DENAH */
-  .denah-wrap {
-    max-width: 800px; margin: 0 auto;
-    background: white; border-radius: 15px;
-    padding: 30px; box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-    border: 2px dashed #c9d9e8;
-    text-align: center;
-  }
-  .denah-wrap .icon-denah { font-size: 4rem; margin-bottom: 15px; }
-  .denah-wrap h3 { color: #1e6bb8; margin-bottom: 12px; }
-  .denah-wrap p { color: #777; font-size: 0.95rem; margin-bottom: 20px; }
-  .denah-wrap .btn-wa-inline {
-    display: inline-block;
-    background: #25D366; color: white;
-    padding: 12px 26px; border-radius: 25px;
-    font-weight: 600; font-size: 0.9rem;
-  }
-
   /* SYARAT */
   .syarat-wrap {
     max-width: 800px; margin: 0 auto;
     background: white; border-radius: 15px;
-    padding: 30px 35px; box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    padding: 30px 35px; box-shadow: 0 5px 20px rgba(0,0,0,0.04);
     border: 1px solid #eef2f7;
   }
   .syarat-wrap ul { list-style: none; }
@@ -268,16 +356,16 @@
     max-width: 700px; margin: 0 auto;
     background: white; border-radius: 15px;
     padding: 40px 35px; text-align: center;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.04);
     border: 1px solid #eef2f7;
   }
-  .testi-wrap .bintang { color: #f39c12; font-size: 1.8rem; margin-bottom: 18px; letter-spacing: 3px; }
+  .testi-wrap .bintang { color: #d4a017; font-size: 1.8rem; margin-bottom: 18px; letter-spacing: 3px; }
   .testi-wrap p { font-style: italic; color: #555; margin-bottom: 18px; font-size: 1.05rem; line-height: 1.7; }
-  .testi-wrap .nama { font-weight: 700; color: #1e6bb8; }
+  .testi-wrap .nama { font-weight: 700; color: #3a4a5c; }
 
   /* FOOTER */
   footer {
-    background: #1a3a5c; color: white;
+    background: #2c3e50; color: white;
     padding: 55px 5% 25px;
   }
   .footer-grid {
@@ -285,16 +373,16 @@
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 35px; max-width: 1100px; margin: 0 auto 35px;
   }
-  .footer-grid h4 { margin-bottom: 18px; color: #ffd166; font-size: 1rem; }
+  .footer-grid h4 { margin-bottom: 18px; color: #d4a017; font-size: 1rem; }
   .footer-grid p, .footer-grid a {
-    font-size: 0.9rem; color: #cbd5e0;
+    font-size: 0.9rem; color: #b8c4d0;
     margin-bottom: 10px; display: block;
     line-height: 1.6;
   }
-  .footer-grid a:hover { color: #ffd166; }
+  .footer-grid a:hover { color: #d4a017; }
   .footer-bottom {
     text-align: center; padding-top: 25px;
-    border-top: 1px solid #2c5a85;
+    border-top: 1px solid #3a4a5c;
     font-size: 0.85rem; color: #8fa8c2;
   }
 
@@ -317,29 +405,63 @@
 </head>
 <body>
 
-<!-- HEADER -->
-<header>
-  <div class="logo">Kos <span>Sarono</span> Papandayan</div>
-  <nav>
-    <a href="#fasilitas">Fasilitas</a>
-    <a href="#kamar">Kamar</a>
-    <a href="#lokasi">Lokasi</a>
-    <a href="#kontak">Kontak</a>
-  </nav>
-  <a href="https://wa.me/6281944584432" class="btn-wa">💬 Hubungi</a>
-</header>
+<!-- ═══════ HERO FULL-IMAGE ═══════ -->
+<div class="hero">
 
-<!-- HERO -->
-<section class="hero">
-  <div class="badge-top">⭐ Rating 5.0 di Google Maps</div>
-  <h1>Rumah Kos <span class="highlight">Nyaman</span><br>di Jantung Semarang</h1>
-  <p>Kamar dengan fasilitas lengkap, lokasi aman 24 jam, harga terjangkau. Cocok untuk mahasiswa, karyawan, atau yang mencari tempat tinggal nyaman di Gajahmungkur.</p>
-  <div class="cta-group">
-    <a href="https://wa.me/6281944584432?text=Halo%20Kos%20Sarono,%20saya%20ingin%20tanya%20ketersediaan%20kamar" class="cta">💬 Hubungi via WhatsApp</a>
-    <a href="#kamar" class="cta-secondary">Lihat Kamar</a>
+  <!-- HEADER TRANSPARAN -->
+  <header class="hero-header">
+    <div class="logo-wrap">
+      <div class="logo-icon">🏠</div>
+      <div class="logo-text">
+        <span class="brand">KOS SARONO</span>
+        <span class="tagline">PAPANDAYAN</span>
+      </div>
+    </div>
+    <nav>
+      <a href="#fasilitas">Fasilitas</a>
+      <a href="#kamar">Kamar</a>
+      <a href="#lokasi">Lokasi</a>
+      <a href="#kontak">Kontak</a>
+    </nav>
+    <a href="https://wa.me/6281944584432" class="header-cta">💬 <span>Hubungi</span></a>
+  </header>
+
+  <!-- HERO CONTENT -->
+  <div class="hero-content">
+    <div class="hero-tagline">Nyaman &nbsp;•&nbsp; Aman &nbsp;•&nbsp; Strategis</div>
+    <h1>Kos Nyaman di <span class="highlight">Jantung Semarang</span></h1>
+    <p>Kamar dengan fasilitas lengkap, lokasi aman 24 jam, harga terjangkau. Cocok untuk mahasiswa, karyawan, atau yang mencari tempat tinggal nyaman di Gajahmungkur.</p>
+    <div class="hero-cta-group">
+      <a href="https://wa.me/6281944584432?text=Halo%20Kos%20Sarono,%20saya%20ingin%20tanya%20ketersediaan%20kamar" class="btn-hero-primary">💬 Hubungi via WhatsApp</a>
+      <a href="#kamar" class="btn-hero-secondary">🏠 Lihat Kamar</a>
+    </div>
   </div>
-  <div class="rating">📍 Jl. Watulawang Timur III No. 2, Gajahmungkur</div>
-</section>
+
+  <!-- THUMBNAIL GALERI -->
+  <div class="hero-galeri">
+    <div class="galeri-thumb">
+      <span class="icon">🏠</span>
+      <span class="label">Tampak Depan</span>
+    </div>
+    <div class="galeri-thumb">
+      <span class="icon">🛏️</span>
+      <span class="label">Kamar</span>
+    </div>
+    <div class="galeri-thumb">
+      <span class="icon">🚿</span>
+      <span class="label">Kamar Mandi</span>
+    </div>
+    <div class="galeri-thumb">
+      <span class="icon">🚪</span>
+      <span class="label">Koridor</span>
+    </div>
+    <div class="galeri-thumb">
+      <span class="icon">🍳</span>
+      <span class="label">Dapur</span>
+    </div>
+  </div>
+
+</div>
 
 <!-- HIGHLIGHT STRIP -->
 <div class="highlight-strip">
@@ -363,7 +485,7 @@
 </section>
 
 <!-- KAMAR -->
-<section id="kamar" style="background:#eef5fb;">
+<section id="kamar" style="background:#eef1f4;">
   <h2 class="section-title">Pilihan Kamar</h2>
   <p class="section-sub">Harga terjangkau, fasilitas maksimal</p>
   <div class="kamar-grid">
@@ -441,20 +563,8 @@
   </div>
 </section>
 
-<!-- DENAH -->
-<section style="background:#eef5fb;">
-  <h2 class="section-title">Denah Kos</h2>
-  <p class="section-sub">Informasi letak kamar</p>
-  <div class="denah-wrap">
-    <div class="icon-denah">🏠</div>
-    <h3>Denah akan segera tersedia</h3>
-    <p>Untuk melihat denah kos dan posisi kamar secara detail, silakan hubungi kami langsung via WhatsApp. Kami akan dengan senang hati menjelaskan tata letak kos.</p>
-    <a href="https://wa.me/6281944584432?text=Halo,%20saya%20ingin%20tanya%20denah%20dan%20tata%20letak%20kamar%20Kos%20Sarono" class="btn-wa-inline">💬 Tanya via WhatsApp</a>
-  </div>
-</section>
-
 <!-- SYARAT -->
-<section>
+<section style="background:#eef1f4;">
   <h2 class="section-title">Syarat & Ketentuan</h2>
   <p class="section-sub">Informasi untuk calon penghuni</p>
   <div class="syarat-wrap">
@@ -469,7 +579,7 @@
 </section>
 
 <!-- TESTIMONI -->
-<section style="background:#eef5fb;">
+<section>
   <h2 class="section-title">Kata Penghuni</h2>
   <p class="section-sub">Rating 5.0 di Google Maps</p>
   <div class="testi-wrap">
